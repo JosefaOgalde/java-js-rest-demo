@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cliente API - Java + JavaScript Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.25rem; }
+    button { padding: 0.5rem 1rem; margin-right: 0.5rem; margin-bottom: 0.5rem; cursor: pointer; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; font-size: 0.875rem; }
+    .error { color: #c00; }
+  </style>
+</head>
+<body>
+  <h1>Cliente API (JavaScript en el navegador)</h1>
+  <p>Consume la API REST Java en <code>http://localhost:8080</code>.</p>
+  <button type="button" id="btnGet">GET /api/items</button>
+  <button type="button" id="btnPost">POST item de ejemplo</button>
+  <pre id="output">Ejecuta la API Java y luego haz clic en un botón.</pre>
+
+  <script>
+    const API_BASE = 'http://localhost:8080/api/items';
+    const output = document.getElementById('output');
+
+    function log(msg) {
+      output.textContent = typeof msg === 'string' ? msg : JSON.stringify(msg, null, 2);
+    }
+
+    document.getElementById('btnGet').addEventListener('click', async () => {
+      try {
+        const res = await fetch(API_BASE);
+        const data = await res.json();
+        log(data);
+      } catch (e) {
+        log('Error: ' + e.message + '. ¿Está la API Java corriendo en :8080?');
+      }
+    });
+
+    document.getElementById('btnPost').addEventListener('click', async () => {
+      try {
+        const res = await fetch(API_BASE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Desde el navegador', description: 'Fetch API + JavaScript' }),
+        });
+        const data = await res.json();
+        log(data);
+      } catch (e) {
+        log('Error: ' + e.message);
+      }
+    });
+  </script>
+</body>
+</html>

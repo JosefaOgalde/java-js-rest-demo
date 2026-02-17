@@ -1,0 +1,12 @@
+{
+  "name": "java-js-rest-demo-client",
+  "version": "1.0.0",
+  "description": "Cliente JavaScript que consume la API REST Java Spring Boot",
+  "type": "module",
+  "main": "api-client.js",
+  "scripts": {
+    "start": "node api-client.js",
+    "get": "node api-client.js get",
+    "post": "node api-client.js post"
+  }
+}
