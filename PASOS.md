@@ -1,4 +1,4 @@
-# Pasos: crear repo, onboarding y ejecutar en local
+# Pasos: crear repo y ejecutar en local
 
 Sigue este orden.
 
@@ -31,16 +31,9 @@ git push -u origin main
 
 ---
 
-## Parte 2: Onboarding (qué es este proyecto)
+## Parte 2: Qué es este proyecto
 
-Lee **`ONBOARDING.md`** en la raíz del repo. Ahí se explica:
-
-- Qué hace el proyecto (API REST de ítems, consumida desde JS).
-- Cómo está organizado (`backend/` Java, `client/` JavaScript).
-- Qué hace cada archivo importante (controller, model, cliente Node, HTML).
-- Cómo fluye una petición (GET/POST desde el cliente a la API).
-
-Resumen mínimo:
+Lee el **`README.md`** en la raíz del repo. Resumen:
 
 - **Backend:** API en Java (Spring Boot) en el puerto **8080** con `GET/POST /api/items`.
 - **Cliente:** script Node (`api-client.js`) y página HTML (`index.html`) que consumen esa API.
@@ -104,6 +97,6 @@ mvn test
 
 1. Crear repo en GitHub (`java-js-rest-demo`).
 2. En tu PC: `git remote add origin ...` y `git push -u origin main`.
-3. Leer **ONBOARDING.md**.
+3. Leer el **README.md**.
 4. Instalar Maven si hace falta.
 5. Ejecutar: `backend` con `mvn spring-boot:run` → luego `client` con `node api-client.js` y/o abrir `client/index.html`.
