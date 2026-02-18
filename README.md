@@ -4,8 +4,9 @@ Proyecto breve que combina **Java (Spring Boot)** y **JavaScript** para exponer 
 
 ## Estructura
 
-- **`backend/`** – API REST en Java 17 + Spring Boot 3
+- **`backend/`** – API REST en Java 17 + Spring Boot 3 (incluye `Dockerfile`)
 - **`client/`** – Cliente en JavaScript (Node.js y navegador)
+- **`automation-example/`** – Script Node.js que consume la API, valida JSON y automatiza flujos (ver su README)
 
 ## Requisitos
 
@@ -30,6 +31,14 @@ mvnw.cmd spring-boot:run
 ```
 
 Si no tienes Maven Wrapper, usa `mvn spring-boot:run` (con Maven instalado).
+
+**Con Docker:**
+
+```bash
+cd backend
+docker build -t api-demo .
+docker run -p 8080:8080 api-demo
+```
 
 La API queda en **http://localhost:8080**.
 
@@ -61,8 +70,9 @@ node api-client.js post   # POST de un item de ejemplo
 
 ## Tecnologías
 
-- **Backend:** Java 17, Spring Boot 3, Spring Web (REST)
+- **Backend:** Java 17, Spring Boot 3, Spring Web (REST), Docker
 - **Cliente:** JavaScript (Node.js con `fetch`, HTML + Fetch API en el navegador)
+- **Automation:** Node.js, integración con APIs REST, validación de JSON
 - **Control de versiones:** Git
 
 ## Autor
