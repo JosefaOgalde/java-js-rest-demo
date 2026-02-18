@@ -1,38 +1,34 @@
 # Java + JavaScript REST API Demo
 
-Proyecto breve que combina **Java (Spring Boot)** y **JavaScript** para exponer y consumir una API REST. Pensado como registro de experiencia en ambos lenguajes (por ejemplo para postulaciones que requieren Java y JS).
+Proyecto que armé para practicar Java con Spring Boot y seguir usando JavaScript del lado cliente. La API es simple (CRUD de ítems) y se puede consumir desde Node o desde el navegador. Incluye un script de ejemplo en `automation-example/` para integrar con la API y validar JSON.
 
 ## Estructura
 
-- **`backend/`** – API REST en Java 17 + Spring Boot 3 (incluye `Dockerfile`)
-- **`client/`** – Cliente en JavaScript (Node.js y navegador)
-- **`automation-example/`** – Script Node.js que consume la API, valida JSON y automatiza flujos (ver su README)
+- **`backend/`** – API REST en Java 17 + Spring Boot 3 (con Dockerfile)
+- **`client/`** – Cliente en JavaScript (Node y HTML)
+- **`automation-example/`** – Script que llama a la API, valida respuestas y crea ítems (ver README ahí)
 
 ## Requisitos
 
-- **Java 17+** (OpenJDK o similar)
-- **Maven 3.6+**
-- **Node.js 18+** (para el cliente; opcional si solo usas el HTML)
+Java 17+, Maven 3.6+ y Node.js 18+ (solo si vas a usar el cliente Node o automation-example).
 
 ## Cómo ejecutar
 
-### 1. Levantar la API (Java)
+### 1. Levantar la API
 
 ```bash
 cd backend
 ./mvnw spring-boot:run
 ```
 
-En Windows (PowerShell o CMD):
+En Windows sin Maven en el PATH:
 
 ```bash
 cd backend
 mvnw.cmd spring-boot:run
 ```
 
-Si no tienes Maven Wrapper, usa `mvn spring-boot:run` (con Maven instalado).
-
-**Con Docker:**
+O con Docker:
 
 ```bash
 cd backend
@@ -40,41 +36,38 @@ docker build -t api-demo .
 docker run -p 8080:8080 api-demo
 ```
 
-La API queda en **http://localhost:8080**.
+La API queda en http://localhost:8080.
 
 ### 2. Probar la API
 
-**Desde Node.js:**
+Desde Node (carpeta `client`):
 
 ```bash
-cd client
-npm start
+node api-client.js get    # lista ítems
+node api-client.js post   # crea un ítem de ejemplo
 ```
 
-O por separado:
+Desde el navegador: abrir `client/index.html`. Los botones hacen GET y POST.
+
+Para el script de automation:
 
 ```bash
-node api-client.js get    # GET /api/items
-node api-client.js post   # POST de un item de ejemplo
+cd automation-example
+node run.js
 ```
-
-**Desde el navegador:** abre `client/index.html` (por archivo o con un servidor estático). Los botones hacen GET y POST a la API.
 
 ### Endpoints
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| GET | `/api/items` | Lista todos los items |
-| GET | `/api/items/{id}` | Obtiene un item por id |
-| POST | `/api/items` | Crea un item (body JSON: `name`, `description`) |
+| GET | `/api/items` | Lista todos los ítems |
+| GET | `/api/items/{id}` | Un ítem por id |
+| POST | `/api/items` | Crea ítem (JSON: `name`, `description`) |
 
-## Tecnologías
+## Stack
 
-- **Backend:** Java 17, Spring Boot 3, Spring Web (REST), Docker
-- **Cliente:** JavaScript (Node.js con `fetch`, HTML + Fetch API en el navegador)
-- **Automation:** Node.js, integración con APIs REST, validación de JSON
-- **Control de versiones:** Git
+Backend: Java 17, Spring Boot 3, Docker. Cliente: JavaScript (Node + fetch, HTML). Automation: Node, APIs REST, validación JSON.
 
-## Autor
+---
 
-[Josefa Ogalde](https://github.com/JosefaOgalde) – Proyecto demo para portfolio/postulación.
+[Josefa Ogalde](https://github.com/JosefaOgalde) – Proyecto de práctica / portfolio.
