@@ -7,6 +7,7 @@ Proyecto que armé para practicar Java con Spring Boot y seguir usando JavaScrip
 - **`backend/`** – API REST en Java 17 + Spring Boot 3 (con Dockerfile)
 - **`client/`** – Cliente en JavaScript (Node y HTML)
 - **`automation-example/`** – Script que llama a la API, valida respuestas y crea ítems (ver README ahí)
+- **`TEST_CASES.md`** – Casos de prueba funcionales para la API
 
 ## Requisitos
 
